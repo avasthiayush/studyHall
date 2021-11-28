@@ -159,6 +159,7 @@ body {
 	}
 	100% {
 		background: #414b52;
+		
 		transform: translate(40%, 42px);
 	}
 }
