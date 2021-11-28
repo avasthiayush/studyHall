@@ -1,0 +1,170 @@
+body{
+  margin: 0;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: 'Jost', sans-serif;
+  /* background: linear-gradient(to bottom, #ebebf0, #8d94f0, #5e69eb); */
+}
+
+.navbar{
+  background-color: rgba(0, 0, 0, 0)
+}
+.navbar .navbar-brand {
+color: black;
+font-size: 50px;
+}
+.navbar .nav-item {
+padding: 10px 20px;
+}
+
+.navbar .nav-link {
+color: black;
+font-size: 20px;
+margin-left: 10px;
+}
+
+.hover-underline-animation {
+display: inline-block;
+text-align: center;
+position: relative;
+color: #ca2f00;
+}
+
+.hover-underline-animation:after {
+content: '';
+position: absolute;
+width: 100%;
+transform: scaleX(0);
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: #0087ca;
+transform-origin: bottom right;
+transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+transform: scaleX(1);
+transform-origin: bottom left;
+}
+
+.fa-bars {
+color: #007bff;
+font-size: 30px;
+}
+
+.classInfo{
+    display: flex;
+    width: 75%;
+    /* justify-content: flex-end; */
+    margin: auto;
+    margin-top: 30px;
+}
+.Teachername{
+    display: flex;
+    margin-left: auto;
+}
+
+.assignment-form{
+    /* border: 1px solid red; */
+    width: 45%;
+    margin: auto;
+    margin-top: 3%;
+}
+
+.login-box {
+    position: relative;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to bottom, #7186caa9, #878fff, #4851b6);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+ 
+  .login-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+ 
+  .login-box .user-box {
+    position: relative;
+  }
+ 
+  .login-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  .login-box .user-box textarea{
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  .login-box .user-box label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 20px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+ 
+  .login-box .user-box input:focus ~ label,
+  .login-box .user-box input:valid ~ label,
+  .login-box .user-box textarea:focus ~ label,
+  .login-box .user-box textarea:valid ~ label {
+    top: -22px;
+    left: 0;
+    color: rgba(21, 14, 221, 0.8);
+    font-size: 15px;
+    font-weight: 500;
+  }
+
+  .login-box .user-input-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  .login-box .user-input-box label {
+    color: #fff;
+    margin-right: 8%;
+    position: relative;
+    font-size: 20px;
+    padding-top: 2%;
+  }
+  .submit-button button{
+    background-color: transparent;
+    border: transparent;
+    margin-top: 10px;
+    font-size: 20px;
+    color: white;
+    padding-left: 0px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+    /* transition: 2s */
+  }

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>View Task</title>
+	<link rel="stylesheet" type="text/css" href="/css/taskStudentStyle.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <a class="navbar-brand" href="/class">StudyHall</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                    <li class="nav-item active">
+                    <a class="nav-link hover-underline-animation" href="/class">MyClasses <span class="sr-only">(current)</span></a>
+                    </li>			  
+                    <li class="nav-item"> <a class="nav-link hover-underline-animation" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="classInfo">
+        <div class="className"><h2> <%= assignment_data.className %></h1></div>
+        <div class="Teachername">
+            <i class="fas fa-chalkboard-teacher"
+                 style="padding-top: 5%; padding-right: 10px;" >
+            </i>
+            <h3><%= assignment_data.teacherName %></h3>
+        </div>
+    </div>
+    <div class="container assign-info-cntenr">
+        <div class="row" >
+            <div class=" col-lg-8 col-md-12 assign-info">
+                <h3> <%= assignment_data.title %> </h3>
+                <p>
+                    <%= assignment_data.description %>
+                </p>
+                <embed src="data:application/pdf;base64,<%= Buffer.from(assignment_data.assignedPdf).toString('base64') %>"  width="100%" height="300" frameborder="0"></embed>
+        
+            </div>
+
+            <div class=" col-lg-3 offset-lg-1 col-md-12 allAssign">
+                <% if(assignment_data.submittedPdf) {%> 
+                    <div class="grade">
+                        <% if(assignment_data.grade >= 0) {%>                            
+                                <h3>grade : <%= assignment_data.grade %>  /100</h3>    
+                        <% } else if(assignment_data.submittedPdf) { %>                            
+                                <h3> Not graded yet </h3>
+                        <%} %>
+                    </div>
+                 <%} %> 
+                <div class="items">
+
+                    <% if(assignment_data.submittedPdf) { %>
+                        <div class="assign-upload" id="submission">
+                            <h4>Submission</h4>
+                            <h5 style="font-weight: 400;">
+                                <a 
+                                    href="/class/<%= assignment_data.classId %>/assignment/<%= assignment_data.assignmentId %>/user/<%= assignment_data.userId%>"
+                                    style="text-decoration: none; color: royalblue;"
+                                >
+                                    View Submission
+                                </a>
+                            </h5>
+                            <p onclick="dismiss(this);" class="delete-it" >
+                                <a
+                                    href="/class/<%= assignment_data.classId %>/assignment/<%= assignment_data.assignmentId %>/delete_submission"
+                                    style="text-decoration: none; color: black; outline: none;"
+                                >
+                                    delete it
+                                </a>
+                            </p> 
+                        </div>
+                    <%} else {%>
+
+                        <form action="/class/<%= assignment_data.classId %>/assignment/<%= assignment_data.assignmentId %>/submit" method="POST" enctype="multipart/form-data" class="assign-upload">
+                            <label for="file-input">Upload</label>
+                            <input type="file" id="file-input" name="filename" required="" > 
+                            <button type="submit" value="Submit" onsubmit="show();" style="outline: none;">Submit</button> 
+                        </form>
+
+                    <% } %>
+                   
+                    <div class="class-grade">
+                        <h3>Submission : <%= assignment_data.percentage %> % </h3>
+                        <h3>Average : <%= assignment_data.average %> /100</h3>
+                        <h3>Median : <%= assignment_data.median %> /100</h3>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

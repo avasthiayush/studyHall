@@ -1,0 +1,329 @@
+body{
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	/* background: linear-gradient(to bottom, #ebebf0, #8d94f0, #5e69eb); */
+}
+
+.navbar{
+	background-color: rgba(0, 0, 0, 0)
+}
+.navbar .navbar-brand {
+	color: black;
+	font-size: 50px;
+  }
+  .navbar .nav-item {
+	padding: 10px 20px;
+  }
+
+  .navbar .nav-link {
+	color: black;
+	font-size: 20px;
+	margin-left: 10px;
+  }
+
+  .hover-underline-animation {
+	display: inline-block;
+	text-align: center;
+	position: relative;
+	color: #ca2f00;
+  }
+  
+  .hover-underline-animation:after {
+	content: '';
+	position: absolute;
+	width: 100%;
+	transform: scaleX(0);
+	height: 2px;
+	bottom: 0;
+	left: 0;
+	background-color: #0087ca;
+	transform-origin: bottom right;
+	transition: transform 0.25s ease-out;
+  }
+  
+  .hover-underline-animation:hover:after {
+	transform: scaleX(1);
+	transform-origin: bottom left;
+  }
+
+  .fa-bars {
+	color: #007bff;
+	font-size: 30px;
+  }
+
+  .classInfo{
+      display: flex;
+      width: 75%;
+      /* justify-content: flex-end; */
+      margin: auto;
+      margin-top: 30px;
+  }
+  .Teachername{
+      display: flex;
+      margin-left: auto;
+  }
+
+  .assignments{
+      margin-top: 50px;
+  }
+
+  .classcode{
+      background-color: white;
+      border-radius: 13px;
+      margin-bottom: 20px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  }
+  .classcode h4, .classcode h5{
+      padding-top: 20px;
+      margin: auto;  
+      width: 80%;
+      text-align: center;
+  }
+  .classcode h5{
+      padding-bottom: 20px;
+  }
+  .allAssign{
+      background-color: transparent;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .creat-assign{
+      background-color: white;
+      border-radius: 8px;
+      padding-left: 14px;
+      padding-top: 14px;
+      padding-right: 14px;
+      display: flex;
+      padding-bottom: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.30), 0 5px 8px rgba(0,0,0,0.22);
+  }
+  .creat-assign button{
+      background-color: transparent;
+      border: none;
+      border-radius: 50%;
+  }
+  .show-assign{
+    background-color: white;
+    border-radius: 8px;
+    padding-left: 14px;
+    padding-top: 14px;
+    padding-right: 14px;
+    display: flex;
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.30), 0 5px 8px rgba(0,0,0,0.22);
+  }
+
+  .assign-name{
+    color : #273791 !important; 
+    text-decoration: none;
+    display: flex;
+  }
+
+  .delete-icon{
+    color :black !important; 
+    text-decoration: none;
+    font-size: 20px;
+  }
+  .assign-icon{
+      vertical-align: middle;
+      margin-right: 20px;
+  }
+
+  @media (max-width: 600px) {
+    .classcode{
+        height: 150px;
+    }
+  }
+
+
+  
+.modal {
+	display: none;
+	position: relative;
+	width: 100%;
+	background: rgb(95, 94, 94 ,0.5);
+	transition: all .4s;
+  }
+  
+ .content{
+	 width: 20%;
+	 margin: auto;
+	 margin-top: 5%;
+	 border-radius: 10px;
+	 background-color: white;
+	 padding: 20px 20px 20px 20px;
+	 display: flex;
+	 flex-direction: column;
+	 text-align: center;
+	 justify-content: center;
+ }
+
+ .head{
+	 width: 100%;
+	 vertical-align: middle;
+	 margin-top: 5px;
+ }
+ .head .stud-data{
+     display: flex;
+	 width: 100%;
+     margin-bottom: 10px;
+     padding-bottom: 5px;
+	 outline: none;
+	 border: transparent;
+	 /* border-bottom: 1px solid rgba(0, 0, 0, 0.5); */
+ }
+
+ .content button{
+	 position: relative;
+	 outline: none;
+	width: 100%;
+	font-size: 20px;
+	background-color: transparent;
+	border-radius: 5px;
+	border:transparent;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+ }
+
+ .content button:focus{
+	 outline: none;
+ }
+
+ .checkbox-block {
+    display: flex;
+    justify-content: space-between;
+}
+.checkbox-effect:not(:checked), .checkbox-effect:checked {
+    position: absolute;
+    left: -9999px;
+}
+label {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+ .checkbox-effect-4:not(:checked) + label:before, .checkbox-effect-4:checked + label:before {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #5a5a5a;
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin-right: 20px;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0.2s;
+}
+.checkbox-effect-4:not(:checked) + label:after, .checkbox-effect-4:checked + label:after {
+    content: "\f00c";
+    font-weight: 900;
+    font-family: 'Font Awesome\ 5 Free';
+    font-size: 22px;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 2px;
+    color: red;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+    transform-origin: center center;
+    opacity: 1;
+}
+.checkbox-effect-4:not(:checked) + label:after {
+    transform: scale(0);
+}
+.checkbox-effect-4:checked + label:before {
+    transform: scale(0);
+    opacity: 0;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: linear;
+    transition-delay: 0s;
+}
+.checkbox-effect-4:checked + label:after {
+    transform: scale(1);
+    opacity: 1;
+    transition-property: all;
+    transition-duration: 0.2s;
+    transition-timing-function: cubic-bezier(0.57, 1.9, 0, 1.52);
+    transition-delay: 0.2s;
+}
+
+@media screen and (max-width : 1200px) {
+  .classcode h4{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width : 992px) {
+  .classcode h4{
+    font-size: 25px;
+  }
+  .navbar .navbar-brand {
+    color: black;
+    font-size: 40px;
+    }
+}
+
+@media screen and (max-width : 692px) {
+  .classcode h4{
+    font-size: 25px;
+  }
+  .navbar .navbar-brand {
+    color: black;
+    font-size: 34px;
+    }
+}
+
+@media screen and (max-width : 1100px){
+	.content{
+		width: 50%;
+	}
+}
+ @media screen and (max-width : 1000px){
+	 
+
+	.content{
+		width: 50%;
+	}
+ }
+
+
+@media screen and (max-width : 576px){
+	
+	.content{
+		width: 60%;
+	}
+}
+@media screen and (max-width : 486px){
+	.content{
+		width: 70%;
+	}
+	
+}
+@media screen and (max-width : 320px){
+	.content{
+		width: 80%;
+	}
+	
+}

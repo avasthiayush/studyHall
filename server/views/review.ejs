@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+	<meta content="width=device-width, intial-scale=1" name="viewport" />
+  <link href="https://playground.anychart.com/docs/samples/DB_Stage_02/iframe" rel="canonical">
+  <meta content="Bar Chart,Bar Graph,Circle Chart,Column Chart,Donut Chart,Doughnut Chart,Graphics,Multiple Axes,Pie Chart,Spline Chart,Vertical Chart" name="keywords">
+  <meta content="AnyChart - JavaScript Charts designed to be embedded and integrated" name="description">
+
+  <link href="https://cdn.anychart.com/releases/8.10.0/css/anychart-ui.min.css?hcode=a0c21fc77e1449cc86299c5faa067dc4" rel="stylesheet" type="text/css">
+  <title>Review</title>
+	<link rel="stylesheet" type="text/css" href="/css/reviewStyle.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+  <style>html, body, #contain {
+    width: 90%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+}</style>
+ </head>
+ <body>
+
+    <nav class="navbar navbar-expand-lg ">
+		<div class="container">
+		  <a class="navbar-brand" href="/class">StudyHall</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	   	  	<i class="fas fa-bars"></i>
+	      </button>
+	
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto w-100 justify-content-end">
+			  <li class="nav-item"> <a class="nav-link hover-underline-animation" href="/logout">Logout</a></li>
+			</ul>
+		  </div>
+		</div>
+	</nav>
+  <div id="contain"></div>
+  <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-base.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-exports.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script src="https://cdn.anychart.com/releases/8.10.0/js/anychart-ui.min.js?hcode=a0c21fc77e1449cc86299c5faa067dc4"></script>
+  <script type="text/javascript">anychart.onDocumentReady(function () {
+
+	// set stage
+	var stage = anychart.graphics.create("contain");
+
+	// create variable for custom theme
+	var customTheme = {
+		"defaultFontSettings": {
+			"fontSize": 9
+		},
+		"chart": {
+			"title": false,
+			"legend": false
+		}
+	};
+
+	
+	// set data
+	var data_2 = [
+		["0 - 20% marks",  "<%= grades[0] %>"],
+		["21 - 40% marks", "<%= grades[1] %>"],
+		["41 - 60% marks", "<%= grades[2] %>"],
+		["61 - 80% marks", "<%= grades[3] %>"],
+		["81 - 100% marks", "<%= grades[4] %>"]
+	];
+
+	// set chart_2
+	var chart_2 = anychart.pie(data_2);
+	chart_2.innerRadius("30%");
+
+	var labels_2 = chart_2.labels();
+	labels_2.fontColor("White");
+	chart_2.title("Marks Distribution");
+
+	var legend = chart_2.legend();
+	legend.itemsLayout('vertical');
+	legend.position('right');
+	legend.align('top');
+	// chart size and position
+	chart_2.bounds("10%", "2%", "65%", "50%");
+
+	// draw
+	chart_2.container(stage);
+	chart_2.draw();
+
+	//chart 3
+
+	// set data
+	var data_3 = [
+		[" Students Not Submitted", "<%= data.not_submitted %>"],
+		[" Students Submitted but not graded", "<%= data.submitted_not_graded %>"],
+		["Students Submitted and graded", "<%= data.submitted_graded %>"]
+	];
+
+	// set chart_2
+	var chart_3 = anychart.bar(data_3);
+	chart_3.title("Popular hours");
+
+	// chart size and position
+	chart_3.bounds("10%", "50%", "55%", "50%");
+
+	// draw
+	chart_3.container(stage);
+	chart_3.draw();
+});</script>
+ </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<link rel="stylesheet" type="text/css" href="/css/LoginStyle.css">
+	<meta content="width=device-width, initial-scale=1" name="viewport" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    
+</head>
+<body>
+	<div class="container">
+        <section class="forms-section">
+            <h1 class="section-title">StudyHall</h1>
+            
+            <div class="forms">
+              <div class="form-wrapper is-active">
+                <button type="button" class="switcher switcher-login">
+                  Login
+                  <span class="underline"></span>
+                </button>
+                <form class="form form-login" autocomplete="off" action="/login" method="POST">
+                  <fieldset>
+                    <legend>Please, enter your email and password for login.</legend>
+                    <div class="input-block">
+                      <label for="login-email">E-mail</label>
+                      <input id="login-email" type="email" name="email" required>
+                    </div>
+                    <div class="input-block">
+                      <label for="login-password">Password</label>
+                      <input id="login-password" type="password" name="password" required>
+                    </div>
+                  </fieldset>
+                  <button type="submit" class="btn-login">Login</button>
+                </form>
+              </div>
+
+              <div class="form-wrapper">
+                <button type="button" class="switcher switcher-signup">
+                  Sign Up
+                  <span class="underline"></span>
+                </button>
+                <form class="form form-signup" autocomplete="off" action="/signup" method="POST">
+                  <fieldset>
+                    <legend>Please, enter your email, password and password confirmation for sign up.</legend>
+                    <div class="input-block">
+                        <label for="signup-password-confirm">Name</label>
+                        <input id="signup-password-confirm" name="name" type="text" required>
+                      </div>
+                    <div class="input-block">
+                      <label for="signup-email">E-mail</label>
+                      <input id="signup-email" name="email" type="email" required>
+                    </div>
+                    <div class="input-block">
+                      <label for="signup-password">Password</label>
+                      <input id="signup-password" type="password" name="password"  required>
+                    </div>
+                    
+                    <div class="input-bloc" style="display: flex;">
+                        <input type="radio" name="role" value="Student" required="" id="student" checked>
+						<label for="student" style="margin-left: auto; color: #414747;">Student</label>
+						<input type="radio" name="role" value="Teacher" required="" id="teacher" style="margin-left: auto;">
+						<label for="teacher" style="margin-left: auto; color: #414747">Teacher</label>
+                    </div>
+                  </fieldset>
+                  <button type="submit" class="btn-signup">Sign-up</button>
+                </form>
+              </div>
+            </div>
+          </section>
+    </div>
+
+      <script>
+        const switchers = [...document.querySelectorAll('.switcher')]
+
+        switchers.forEach(item => {
+            item.addEventListener('click', function() {
+                switchers.forEach(item => item.parentElement.classList.remove('is-active'))
+                this.parentElement.classList.add('is-active')
+            })
+        })
+
+    </script>
+</body>
+</html>

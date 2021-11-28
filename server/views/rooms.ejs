@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Rooms </title>
+	<link rel="stylesheet" type="text/css" href="/css/roomsStyle.css">
+	<meta content="width=device-width, intial-scale=1" name="viewport" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg ">
+		<div class="container">
+		  <a class="navbar-brand" href="/class">StudyHall</a>
+		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	   <i class="fas fa-bars"></i>
+	  </button>
+	
+		  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto w-100 justify-content-end">
+			  <li class="nav-item active">
+				<a class="nav-link hover-underline-animation" href="#">MyClasses <span class="sr-only">(current)</span></a>
+			  </li>
+				<% if(role == 'Teacher') { %> 
+			  <li class="nav-item">
+					<a class="nav-link hover-underline-animation" href="#" onclick="document.getElementById('create-modal').style.display='block'">Create</a>
+				</li>
+				<%} %>
+				<li class="nav-item">
+					<a class="nav-link hover-underline-animation" href="#" onclick="document.getElementById('join-modal').style.display='block'">Join</a>
+				</li>
+			  <li class="nav-item"> <a class="nav-link hover-underline-animation" href="/logout">Logout</a></li>
+			</ul>
+		  </div>
+		</div>
+	  </nav>
+
+		<div id="create-modal" class="modal" onclick="close_model('create-modal')">
+			<div class="content" onclick="not_close_model(event)">
+				<form action='/class' method='POST'>
+					<div class="head">
+						<input type="text" name="name" placeholder="Class Name" required="">
+					</div>
+					<button type="submit"> Enter </button>
+				</form>
+			</div>
+		</div>
+
+		<div id="join-modal" class="modal" onclick="close_model('join-modal')">
+			<div class="content" onclick="not_close_model(event)">
+				<form action='/class/join' method='GET'>
+					<div class="head">
+						<input type="text" name="classCode" placeholder="Class Code" required="">
+					</div>
+					<button type="submit"> Enter </button>	
+				</form>
+			</div>
+		</div>
+
+	<div class="container class-container">
+		<div class="card-deck row">
+			
+			<% for(var i=0; i<classes.length; i++) {%>
+
+			<div class="col-xs-12 col-sm-6 col-md-4" style="margin-bottom: 30px; ">
+				<a href="/class/<%= classes[i].id %>" style="text-decoration: none; ">
+					<div class="card class-card" style="border-radius: 15px;">
+						<div class="view overlay">
+							<img class="class-card-image" src="/img/class.svg" alt="Card image cap">
+						</div>
+						<div class="card-body">
+							<div><h4 class="card-title"> <%= classes[i].name %> </h4>
+						  <h5 style="text-align: center; color: rgb(26, 54, 114);"> <%= classes[i].teacher %></h5>
+					 </div>
+						</div>
+					</div>
+				</a>
+			</div>
+
+			<%} %>
+			
+		</div>
+	</div>
+     
+	<script>
+		function close_model(id){
+			document.getElementById(id).style.display='none'
+		}
+		function not_close_model(event){
+			event.stopPropagation();
+		}
+	</script>
+
+	 </body>
+</html>

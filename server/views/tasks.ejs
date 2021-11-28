@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Task</title>
+	<link rel="stylesheet" type="text/css" href="/css/tasksStyle.css">
+    <meta content="width=device-width, intial-scale=1" name="viewport" />
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg ">
+        <div class="container">
+            <a class="navbar-brand" href="/class">StudyHall</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto w-100 justify-content-end">
+                    <li class="nav-item active">
+                    <a class="nav-link hover-underline-animation" href="/class">MyClasses <span class="sr-only">(current)</span></a>
+                    </li>
+                    <% if(user_id.toString() == class_data.teacher_id.toString()) { %>
+                    <li class="nav-item"> <a class="nav-link hover-underline-animation" href="#" onclick="document.getElementById('demo-modal').style.display='block'">Student-List</a></li>			  		  
+                    <% } else {%>
+                        <li class="nav-item"> <a class="nav-link hover-underline-animation" href="/class/<%= class_data.classId %>/leave"> Leave Class</a></li>
+                    <% } %>
+                    <li class="nav-item"> <a class="nav-link hover-underline-animation" href="/logout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+
+    <div class="classInfo">
+        <div class="className"><h2 style="text-transform: capitalize;"> <%= class_data.name %></h1></div>
+        <div class="Teachername">
+            <i class="fas fa-chalkboard-teacher"
+                 style="padding-top: 7%; padding-right: 10px;" >
+            </i>
+            <h3 style="text-transform: capitalize;"> <%= class_data.teacher %> </h3>
+        </div>
+    </div>
+    <div class="container assignments">
+        <div class="row">
+            <div class="col-lg-2 col-md-12 classcode">
+                <div><h4> Class Code </h4></div>
+                <div><h5> <%= class_data.classCode %></h5></div>
+            </div>
+            <div class="col-lg-9 col-md-12 offset-lg-1 allAssign">
+
+                <% if(user_id.toString() == class_data.teacher_id.toString()) { %> 
+                   
+                    <div class="creat-assign">
+                        <div><h4> Create an assignment </h4></div>
+                        <div style="margin-left: auto; font-size: 23px;">
+                        <button>
+                            <a class="fas fa-arrow-right" href="/class/<%= class_data.classId %>/assignment/create"></a>
+                        </button></div>
+                    </div>
+                <% } %>
+
+                <% for(var i=0; i<class_data.assignments.length; i++) {%>
+                    <div class="show-assign">
+                        <a 
+                            href ="/class/<%= class_data.classId %>/assignment/<%= class_data.assignments[i]._id %>/view?teacher=<%= user_id.toString() == class_data.teacher_id.toString() %>"
+                            class="assign-name" 
+                            style="text-decoration: none;">
+                            <span class="assign-icon"><i class="fas fa-tasks fa-lg"></i></span>
+                            <span><h5> <%= class_data.assignments[i].title %></h5></span>
+                        </a>
+                        <% if(user_id.toString() == class_data.teacher_id.toString()) { %> 
+                            <a
+                                href="/class/<%= class_data.classId %>/assignment/<%= class_data.assignments[i]._id %>/delete_assignment"
+                                class="delete-icon" style="margin-left: auto;"><i class="fas fa-trash-alt" ></i></a>
+                        <% } %>
+                    </div>
+                <%} %>
+            </div>
+        </div>
+    </div>
+        
+
+    <div id="demo-modal" class="modal" onclick="close_model()">
+		<div class="content" onclick="not_close_model(event)">
+			<div class="head">
+				<div class="container stud-data">
+                    <% if ( class_data.students_list.length ) {%>
+                    <form style="margin: auto;" action="/class/<%= class_data.classId %>/remove" method="POST">
+                        <% for(var i=0; i<class_data.students_list.length; i++) {%>
+                            <div class="checkbox-block">
+                                <input class="checkbox-effect checkbox-effect-4" id="get-up-<%= i %>" type="checkbox" value="<%= class_data.students_list[i]._id %>" name="_id"/>
+                                <label for="get-up-<%= i %>" style="font-size:20px;"><%= class_data.students_list[i].name %></label>
+                            </div>
+                        <%} %>
+
+                        <button type="submit" style="margin-top: 10px;"> Remove </button>
+                    </form>
+                <% } else {%>
+                    <h4 style="width: 100%; margin: auto;" >   No Student </h4>   
+                <% } %>
+                </div>                
+			</div>			
+		</div>
+	</div>
+    <script>
+        function close_model(){
+			document.getElementById('demo-modal').style.display='none'
+		}
+		function not_close_model(event){
+			event.stopPropagation();
+		}
+    </script>
+</body>
+</html>

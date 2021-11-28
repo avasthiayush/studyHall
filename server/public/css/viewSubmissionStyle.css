@@ -1,0 +1,183 @@
+body{
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	/* background: linear-gradient(to bottom, #ebebf0, #8d94f0, #5e69eb); */
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.navbar{
+	background-color: rgba(0, 0, 0, 0)
+}
+.navbar .navbar-brand {
+color: black;
+font-size: 8vmin;
+}
+.navbar .nav-item {
+padding: 10px 20px;
+}
+
+.navbar .nav-link {
+color: black;
+font-size: 23px;
+margin-left: 10px;
+}
+
+.hover-underline-animation {
+display: inline-block;
+text-align: center;
+position: relative;
+color: #ca2f00;
+}
+
+.hover-underline-animation:after {
+content: '';
+position: absolute;
+width: 100%;
+transform: scaleX(0);
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: #0087ca;
+transform-origin: bottom right;
+transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+transform: scaleX(1);
+transform-origin: bottom left;
+}
+
+.fa-bars {
+color: #007bff;
+font-size: 30px;
+}
+
+.modal {
+	display: none;
+	position: relative;
+	width: 100%;
+	background: rgb(95, 94, 94 ,0.5);
+	transition: all .4s;
+  }
+  
+ .content{
+	 width: 30%;
+	 margin: auto;
+	 margin-top: 5%;
+	 border-radius: 10px;
+	 background-color: white;
+	 padding: 20px 20px 20px 20px;
+	 display: flex;
+	 flex-direction: column;
+	 text-align: center;
+	 justify-content: center;
+ }
+
+ .head{
+	 width: 100%;
+	 vertical-align: middle;
+	 margin-top: 5px;
+	 margin-bottom: 25px;
+ }
+ .head input{
+	 width: 100%;
+	 outline: none;
+	 border: transparent;
+	 border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+ }
+
+ .content button{
+	 position: relative;
+	 outline: none;
+	width: 30%;
+	align-items: center;
+	margin: auto;
+	font-size: 20px;
+	background-color: transparent;
+	border-radius: 5px;
+	border:transparent;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+	cursor: pointer;
+ }
+
+ .content button:focus{
+	 outline: none;
+ }
+
+ 
+@media screen and (max-width : 1200px) {
+	.classcode h4{
+	  font-size: 20px;
+	}
+  }
+  
+  @media screen and (max-width : 992px) {
+	.classcode h4{
+	  font-size: 25px;
+	}
+	.navbar .navbar-brand {
+	  color: black;
+	  font-size: 40px;
+	  }
+	  .navbar .nav-link {
+		color: black;
+		font-size: 25px;
+		}
+  }
+  
+  @media screen and (max-width : 692px) {
+	.classcode h4{
+	  font-size: 25px;
+	}
+	.navbar .navbar-brand {
+	  color: black;
+	  font-size: 34px;
+	  }
+	  .navbar .nav-link {
+		color: black;
+		font-size: 23px;
+		}
+  }
+  
+  @media screen and (max-width : 1100px){
+	  .content{
+		  width: 50%;
+	  }
+  }
+   @media screen and (max-width : 1000px){
+	   
+  
+	  .content{
+		  width: 50%;
+	  }
+   }
+  
+  
+  @media screen and (max-width : 576px){
+	  
+	  .content{
+		  width: 60%;
+	  }
+  }
+  @media screen and (max-width : 486px){
+	  .content{
+		  width: 70%;
+	  }
+	  
+  }
+  @media screen and (max-width : 320px){
+	  .content{
+		  width: 80%;
+	  }
+	  
+  }

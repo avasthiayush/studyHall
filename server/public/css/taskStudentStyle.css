@@ -1,0 +1,161 @@
+body{
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+    /* background-image: url(/img/short.svg); */
+	/* background: linear-gradient(to bottom, #ebebf0, #8d94f0, #5e69eb); */
+}
+
+.navbar{
+	background-color: rgba(0, 0, 0, 0)
+}
+.navbar .navbar-brand {
+color: black;
+font-size: 50px;
+}
+.navbar .nav-item {
+padding: 10px 20px;
+}
+
+.navbar .nav-link {
+color: black;
+font-size: 20px;
+margin-left: 10px;
+}
+
+.hover-underline-animation {
+display: inline-block;
+text-align: center;
+position: relative;
+color: #ca2f00;
+}
+
+.hover-underline-animation:after {
+content: '';
+position: absolute;
+width: 100%;
+transform: scaleX(0);
+height: 2px;
+bottom: 0;
+left: 0;
+background-color: #0087ca;
+transform-origin: bottom right;
+transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+transform: scaleX(1);
+transform-origin: bottom left;
+}
+
+.fa-bars {
+color: #007bff;
+font-size: 30px;
+}
+
+.classInfo{
+    display: flex;
+    width: 75%;
+    /* justify-content: flex-end; */
+    margin: auto;
+    margin-top: 30px;
+}
+.Teachername{
+    display: flex;
+    margin-left: auto;
+}
+
+.assign-info-cntenr{
+    margin-top: 30px;    
+}
+.assign-info{
+    padding: 20px;
+    box-shadow: 0 15px 25px rgba(0,0,0,.4);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.assign-info p{
+    padding-top: 20px;
+    font-size: 20px;
+    padding-bottom: 20px;
+}
+
+.items{
+    display: flex;
+    flex-direction: column;
+}
+.items .assign-upload , .class-grade{
+    display: flex;
+    box-shadow: 0 10px 20px rgba(0,0,0,.4);
+    border-radius: 10px;
+    flex-direction: column;
+    margin-bottom: 35px;
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+}
+
+.grade{
+    box-shadow: 0 10px 20px rgba(0,0,0,.4);
+    border-radius: 10px;
+    flex-direction: column;
+    margin-bottom: 35px;
+    padding-left: 5%;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    text-align: center;
+}
+.grade h3{
+    font-size: 26px;
+}
+
+.class-grade{
+    text-align: center;
+}
+
+.class-grade h3{
+    font-size: 22px;
+}
+
+.items form label{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.items .assign-upload h4{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.items form button , .items .delete-it{
+    margin: auto;
+    font-size: 20px;
+    font-weight: 600;
+     margin-top: 10px;
+    text-decoration: none;
+    border: none;
+    border-bottom: 1px solid #007bff;
+    background-color: transparent;
+    width: 60%;
+    text-align: center;
+}
+
+#submission{
+    display: flex;
+}
+
+@media (max-width : 991px) {
+    .assign-info{
+        margin-bottom: 50px;
+    }
+    .assign-upload{
+        text-align: center;
+    }
+    .assign-upload input{
+        width: 40%;
+        margin: auto;
+    }
+}
