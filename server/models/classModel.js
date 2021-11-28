@@ -21,16 +21,8 @@ const classSchema = new mongoose.Schema({
     students : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'User'
-    }],
-
-    announcements : [{
-        title : {
-         type : String
-       },
-       description : {
-         type : String
-       }
     }]
+
 } , {
     timestamps : true
 })
